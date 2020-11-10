@@ -1,64 +1,140 @@
-$(window).load(function(){
-	$('#preloader').fadeOut('slow',function(){$(this).remove();});
+/* =================================
+------------------------------------
+	Civic - CV Resume
+	Version: 1.0
+ ------------------------------------ 
+ ====================================*/
+
+
+
+'use strict';
+
+
+$(window).on('load', function() { 
+	/*------------------
+		Preloder
+	--------------------*/
+	$(".loader").fadeOut(); 
+	$("#preloder").delay(400).fadeOut("slow");
+
 });
 
 
-/******************************************************************************************************************************
-Learn More Page Scroll
-*******************************************************************************************************************************/
-$(function() {
-    $('a.page-scroll').bind('click', function(event) {
-        var $anchor = $(this);
-        $('html, body').stop().animate({
-            scrollTop: $($anchor.attr('href')).offset().top
-        }, 1500, 'easeInOutExpo');
-        event.preventDefault();
-    });
-});
+(function($) {
 
-/******************************************************************************************************************************
-Menu
-*******************************************************************************************************************************/ 
-(function() {
+	/*------------------
+		Background set
+	--------------------*/
+	$('.set-bg').each(function() {
+		var bg = $(this).data('setbg');
+		$(this).css('background-image', 'url(' + bg + ')');
+	});
 
-	var bodyEl = document.body,
-		//content = document.querySelector( '.content-wrap' ),
-		openbtn = document.getElementById( 'open-button' ),
-		closebtn = document.getElementById( 'close-button' ),
-		isOpen = false;
 
-	function init() {
-		initEvents();
-	}
+	$('.review-slider').owlCarousel({
+		loop: true,
+		nav: false,
+		dots: true,
+		items: 1,
+		autoplay: true
+	});
 
-	function initEvents() {
-		openbtn.addEventListener( 'click', toggleMenu );
-		if( closebtn ) {
-			closebtn.addEventListener( 'click', toggleMenu );
-		}
 
-		/* close the menu element if the target it´s not the menu element or one of its descendants..
-		content.addEventListener( 'click', function(ev) {
-			var target = ev.target;
-			if( isOpen && target !== openbtn ) {
-				toggleMenu();
-			}
-		} );
-		*/
-	}
 
-	function toggleMenu() {
-		if( isOpen ) {
-			classie.remove( bodyEl, 'show-menu' );
+	$('.progress-bar-style').each(function() {
+		var progress = $(this).data("progress");
+		var prog_width = progress + '%';
+		if (progress <= 100) {
+			$(this).append('<div class="bar-inner" style="width:' + prog_width + '"><span>' + prog_width + '</span></div>');
 		}
 		else {
-			classie.add( bodyEl, 'show-menu' );
+			$(this).append('<div class="bar-inner" style="width:100%"><span>' + prog_width + '</span></div>');
 		}
-		isOpen = !isOpen;
-	}
+	});
 
-	init();
 
-})();
+	$('.lan-prog').each(function() {
+		var progress = $(this).data("lanprogesss");
+		var ele      = '<span></span>';
+		var ele_fade = '<span class="fade-ele"></span>';
+		
+		for (var i = 1; i <= 5; i++) {
+			if(i <= progress){
+				$(this).append(ele);
+			} else {
+				$(this).append(ele_fade);
+			}
+		}
+	});
 
+
+	/*------------------
+		Popup
+	--------------------*/
+	$('.portfolio-item .port-pic').magnificPopup({
+		type: 'image',
+		mainClass: 'img-popup-warp',
+		removalDelay: 500,
+	});
+
+
+
+
+if($().circleProgress){
+
+	//Set progress circle 1
+	$("#progress1").circleProgress({
+		value: 0.75,
+		size: 175,
+		thickness: 2,
+		fill: "#40424a",
+		emptyFill: "rgba(0, 0, 0, 0)"
+	});
+	//Set progress circle 2
+	$("#progress2").circleProgress({
+		value: 0.83,
+		size: 175,
+		thickness: 2,
+		fill: "#40424a",
+		emptyFill: "rgba(0, 0, 0, 0)"
+	});
+
+	//Set progress circle white
+	$("#progress3").circleProgress({
+		value: 0.75,
+		size: 175,
+		thickness: 2,
+		fill: "#ffffff",
+		emptyFill: "rgba(0, 0, 0, 0)"
+	});
+
+	//Set progress circle white
+	$("#progress4").circleProgress({
+		value: 0.83,
+		size: 175,
+		thickness: 2,
+		fill: "#ffffff",
+		emptyFill: "rgba(0, 0, 0, 0)"
+	});
+
+	//Set progress circle skyblue
+	$("#progress5").circleProgress({
+		value: 0.75,
+		size: 175,
+		thickness: 2,
+		fill: "#009fff",
+		emptyFill: "rgba(0, 0, 0, 0)"
+	});
+
+	//Set progress circle skyblue
+	$("#progress6").circleProgress({
+		value: 0.83,
+		size: 175,
+		thickness: 2,
+		fill: "#009fff",
+		emptyFill: "rgba(0, 0, 0, 0)"
+	});
+}
+
+})(jQuery);
 
