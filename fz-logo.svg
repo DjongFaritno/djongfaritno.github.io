@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 240" role="img" aria-labelledby="title desc">
+  <title id="title">Faritno Zuliansyah | FZ monogram</title>
+  <desc id="desc">A bold black FZ monogram with a vivid green period on a transparent background.</desc>
+  <g fill="#121212">
+    <path d="M56 42h186v44H108v50h118v43H108v71H56z"/>
+    <path d="M280 42h224v38L351 196h158v44H273v-39L426 86H280z"/>
+  </g>
+  <circle cx="568" cy="211" r="29" fill="#B9F227"/>
+</svg>
