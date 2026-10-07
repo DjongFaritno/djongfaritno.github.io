@@ -27,6 +27,6 @@ Semua aset menggunakan path relatif sehingga bisa dibuka lewat file lokal maupun
 
 ## Sebelum dibagikan ke publik
 
-Repository aplikasi SocialMedia saat ini privat, sehingga unduhan membutuhkan akun GitHub yang punya akses. Halaman menjelaskan batasan ini. Jika file rilis dipindahkan ke lokasi publik, perbarui tautan dan catatan akses di index.html.
+Repository aplikasi SocialMedia sudah publik. Unduhan AppImage dan installer Fedora terbaru tersedia bersama paket Windows dan macOS di GitHub Release.
 
-Tautan paket menunjuk versi 0.1.4. Saat ada rilis baru, perbarui versi dan URL unduhan. Website tidak memakai analytics, font eksternal, atau layanan tambahan.
+Tautan paket menunjuk versi 0.1.5. Saat ada rilis baru, perbarui versi dan URL unduhan. Website tidak memakai analytics, font eksternal, atau layanan tambahan.
