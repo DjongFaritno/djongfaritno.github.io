@@ -31,6 +31,6 @@ Repository aplikasi SocialMedia sudah publik. Unduhan AppImage dan installer Fed
 
 Nomor versi, tautan unduhan, checksum, dan nama file pada panduan otomatis mengikuti rilis lengkap terbaru melalui GitHub Releases API publik. Prerelease juga dibaca. Tidak membutuhkan token atau backend. Paket Windows x64, macOS universal, Linux AppImage, dan install-fedora.sh harus selesai diunggah dalam rilis yang sama sebelum website beralih, sehingga versi panduan dan installer selalu selaras.
 
-Saat pemeriksaan GitHub gagal (misalnya offline atau kuota API habis), tautan v0.1.5 tetap tersedia dengan pesan yang menjelaskan bahwa versi terbaru belum bisa diperiksa dan tautan ke seluruh rilis. Batas API tanpa autentikasi berlaku per IP. Tidak ada token yang ditanam di website.
+Saat pemeriksaan GitHub gagal (misalnya offline atau kuota API habis), tombol unduh mengarah ke halaman GitHub Releases. Website tidak menawarkan tautan versi lama sebagai fallback. Nama file dan perintah Linux baru ditampilkan setelah rilis lengkap yang sesuai ditemukan. Batas API tanpa autentikasi berlaku per IP. Tidak ada token yang ditanam di website.
 
 File releases.js menangani pemilihan rilis dan pembaruan tampilan. Website tidak memakai analytics atau font eksternal.

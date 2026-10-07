@@ -57,6 +57,8 @@
     doc.querySelectorAll('[data-release-command]').forEach(node => {
       node.textContent = 'chmod +x ' + filename + '\n./' + filename;
     });
+    doc.querySelectorAll('[data-release-guide]').forEach(node => { node.hidden = false; });
+    doc.querySelectorAll('[data-release-guide-fallback]').forEach(node => { node.hidden = true; });
     doc.getElementById('release-status').textContent = 'Rilis tersedia: v' + release.version;
   }
   async function refresh(doc, fetcher = fetch) {
@@ -71,7 +73,11 @@
       return release;
     } catch {
       const status = doc.getElementById('release-status');
-      status.textContent = 'Versi terbaru belum bisa diperiksa. Unduhan v0.1.5 tetap tersedia. ';
+      status.textContent = 'Versi terbaru belum bisa diperiksa. Ambil paket dari halaman rilis GitHub. ';
+      doc.querySelectorAll('[data-release-download], [data-release-page]').forEach(node => { node.href = repository + '/releases'; });
+      doc.querySelectorAll('[data-release-version]').forEach(node => { node.textContent = '—'; });
+      doc.querySelectorAll('[data-release-guide]').forEach(node => { node.hidden = true; });
+      doc.querySelectorAll('[data-release-guide-fallback]').forEach(node => { node.hidden = false; });
       const link = doc.createElement('a');
       link.href = repository + '/releases';
       link.textContent = 'Lihat semua rilis ↗';
