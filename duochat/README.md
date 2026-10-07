@@ -14,7 +14,7 @@ Salin seluruh folder duochat ke sumber website repository DjongFaritno/djongfari
 
 Setelah kamu commit dan push di repository website serta deployment Pages selesai, alamatnya adalah https://djongfaritno.github.io/duochat/.
 
-Paket ini belum diunggah atau dipublikasikan. Repository SocialMedia tidak diubah.
+Source website berada di repository djongfaritno.github.io, terpisah dari aplikasi SocialMedia. ZIP tetap bisa dibuka secara lokal.
 
 ## Isi folder
 
@@ -29,4 +29,8 @@ Semua aset menggunakan path relatif sehingga bisa dibuka lewat file lokal maupun
 
 Repository aplikasi SocialMedia sudah publik. Unduhan AppImage dan installer Fedora terbaru tersedia bersama paket Windows dan macOS di GitHub Release.
 
-Tautan paket menunjuk versi 0.1.5. Saat ada rilis baru, perbarui versi dan URL unduhan. Website tidak memakai analytics, font eksternal, atau layanan tambahan.
+Nomor versi, tautan unduhan, checksum, dan nama file pada panduan otomatis mengikuti rilis lengkap terbaru melalui GitHub Releases API publik. Prerelease juga dibaca. Tidak membutuhkan token atau backend. Paket Windows x64, macOS universal, Linux AppImage, dan install-fedora.sh harus selesai diunggah dalam rilis yang sama sebelum website beralih, sehingga versi panduan dan installer selalu selaras.
+
+Saat pemeriksaan GitHub gagal (misalnya offline atau kuota API habis), tautan v0.1.5 tetap tersedia dengan pesan yang menjelaskan bahwa versi terbaru belum bisa diperiksa dan tautan ke seluruh rilis. Batas API tanpa autentikasi berlaku per IP. Tidak ada token yang ditanam di website.
+
+File releases.js menangani pemilihan rilis dan pembaruan tampilan. Website tidak memakai analytics atau font eksternal.

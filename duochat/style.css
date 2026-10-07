@@ -6,3 +6,5 @@
 /* WhatsApp mint meets Telegram blue. */
 body{background:radial-gradient(ellipse at 6% 12%,#e3f7e9 0,transparent 34%),radial-gradient(ellipse at 96% 20%,#e2f2ff 0,transparent 35%),var(--paper)}h1>span{background:#dceffa;color:#297ea8}.hero-visual{background:linear-gradient(120deg,#daf2e3,#dcedfb)}.feature-list article:nth-child(3){background:#d5edde}.download-card:nth-child(2) .button{background:#287fa9;box-shadow:0 5px 0 #c1dce9}.download-card:nth-child(2) .button:hover{background:#226b8e}
 @media(max-width:760px){h1>span{display:table;margin:7px auto 10px}}
+
+.release-status{font-size:14px;color:var(--muted);margin:30px 0 0;text-align:center}.release-status a{font-weight:bold}.hero-note>span>span{margin:0;padding:0;border:0}
