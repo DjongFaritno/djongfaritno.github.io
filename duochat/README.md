@@ -37,7 +37,7 @@ File releases.js menangani pemilihan rilis dan pembaruan tampilan. Website tidak
 
 ## Big update beta
 
-Halaman memperkenalkan 0.2.0-beta.1 sebagai kandidat yang terpisah dari rilis publik. Tombol beta menuju artifact build ketiga OS dari workflow 38370877161; artifact tersebut kedaluwarsa 27 Oktober 2026 dan GitHub dapat meminta login untuk mengunduh. Perbarui bagian beta ketika kandidat/rilis berikutnya siap atau masa artifact habis.
+Halaman memperkenalkan 0.2.0-beta.2 sebagai kandidat yang terpisah dari rilis publik. Tombol beta menuju artifact build ketiga OS dari workflow 38412864751; artifact tersebut kedaluwarsa 27 Oktober 2026 dan GitHub dapat meminta login untuk mengunduh. Perbarui bagian beta ketika kandidat/rilis berikutnya siap atau masa artifact habis.
 
 Tombol pada bagian Rilis publik tetap memakai releases.js untuk memilih rilis lengkap terbaru. Nomor beta pada hero tidak mengikuti nomor rilis publik agar status keduanya tidak tercampur. Demo Ringkas menyembunyikan header/sidebar ilustrasi; hover tepi kiri menampilkan sidebar contoh. Demo tidak terhubung ke akun layanan.
 
