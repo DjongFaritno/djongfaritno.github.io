@@ -40,3 +40,17 @@
     link.addEventListener('click', () => selectGuide(link.dataset.guideLink));
   });
 })();
+
+(() => {
+  const preview = document.querySelector('#preview');
+  const compact = document.querySelector('#preview-compact');
+  const restore = document.querySelector('#preview-restore');
+  const setCompact = hidden => {
+    preview.classList.toggle('preview-compact', hidden);
+    compact.setAttribute('aria-pressed', String(hidden));
+    restore.hidden = !hidden;
+    if (!hidden) compact.focus();
+  };
+  compact.addEventListener('click', () => setCompact(true));
+  restore.addEventListener('click', () => setCompact(false));
+})();

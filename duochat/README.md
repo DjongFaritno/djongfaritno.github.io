@@ -34,3 +34,11 @@ Nomor versi, tautan unduhan, checksum, dan nama file pada panduan otomatis mengi
 Saat pemeriksaan GitHub gagal (misalnya offline atau kuota API habis), tombol unduh mengarah ke halaman GitHub Releases. Website tidak menawarkan tautan versi lama sebagai fallback. Nama file dan perintah Linux baru ditampilkan setelah rilis lengkap yang sesuai ditemukan. Batas API tanpa autentikasi berlaku per IP. Tidak ada token yang ditanam di website.
 
 File releases.js menangani pemilihan rilis dan pembaruan tampilan. Website tidak memakai analytics atau font eksternal.
+
+## Big update beta
+
+Halaman memperkenalkan 0.2.0-beta.1 sebagai kandidat yang terpisah dari rilis publik. Tombol beta menuju artifact build ketiga OS dari workflow 38370877161; artifact tersebut kedaluwarsa 27 Oktober 2026 dan GitHub dapat meminta login untuk mengunduh. Perbarui bagian beta ketika kandidat/rilis berikutnya siap atau masa artifact habis.
+
+Tombol pada bagian Rilis publik tetap memakai releases.js untuk memilih rilis lengkap terbaru. Nomor beta pada hero tidak mengikuti nomor rilis publik agar status keduanya tidak tercampur. Demo Ringkas menyembunyikan header/sidebar ilustrasi; hover tepi kiri menampilkan sidebar contoh. Demo tidak terhubung ke akun layanan.
+
+Website dipublikasikan melalui GitHub Pages dari folder duochat pada repository djongfaritno.github.io.
