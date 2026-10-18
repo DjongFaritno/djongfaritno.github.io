@@ -23,6 +23,8 @@ const server=http.createServer(async(req,res)=>{
    await page.goto(base);await page.locator('#release-status').filter({hasText:'0.4.0'}).waitFor();
    await page.screenshot({path:'artifacts/duochat-'+width+'.png',fullPage:true});
    assert.equal(await page.locator('.service-chips span').count(),13);
+   assert.equal(await page.locator('.free-note').count(),2);
+   for(const note of await page.locator('.free-note').all())assert.match(await note.innerText(),/Gratis.*Tanpa iklan.*Tanpa langganan/);
    assert.equal(await page.locator('[data-release-download=windows]').getAttribute('href'),release.assets[0].browser_download_url);
    assert.ok(!/big update|big release|coba beta|0\.2\.0|artifact/i.test(await page.locator('body').innerText()));
    assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),true,'no horizontal overflow '+width);
@@ -82,8 +84,9 @@ const server=http.createServer(async(req,res)=>{
    await mood.locator('[data-card-lang=en]').click();assert.equal(await mood.locator('[data-mood-title]').innerText(),'Your chat corner');
    await mood.locator('[data-card-lang=id]').click();assert.equal(await mood.locator('[data-mood-title]').innerText(),'Ruang ngobrolmu');
    await mood.locator('[data-card-theme=auto]').click();await page.emulateMedia({colorScheme:'dark'});
+   await page.waitForFunction(()=>document.querySelector('#feature-mood').dataset.demoTheme==='dark');
    assert.equal(await mood.getAttribute('data-demo-theme'),'dark');
-   await page.emulateMedia({colorScheme:'light'});assert.equal(await mood.getAttribute('data-demo-theme'),'light');
+   await page.emulateMedia({colorScheme:'light'});await page.waitForFunction(()=>document.querySelector('#feature-mood').dataset.demoTheme==='light');assert.equal(await mood.getAttribute('data-demo-theme'),'light');
    const active=page.locator('#feature-active');
    await active.locator('[data-active]').click();assert.equal(await active.locator('[data-active-status]').innerText(),'Tetap aktif');
    await active.locator('[data-active]').click();assert.equal(await active.locator('[data-active-status]').innerText(),'Dijeda');
