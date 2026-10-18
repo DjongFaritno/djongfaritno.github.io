@@ -104,6 +104,7 @@ const server=http.createServer(async(req,res)=>{
   const photo=touchPage.locator('[data-blur-panel=kiri] .fd-photo');
   await photo.tap();assert.equal(await photo.getAttribute('aria-pressed'),'true');
   await photo.tap();assert.equal(await photo.getAttribute('aria-pressed'),'false');
+  assert.match(await photo.evaluate(e=>getComputedStyle(e).filter),/blur/,'second tap hides photo immediately');
   // Move focus to avoid a sticky touch-hover masking the base blurred state.
   await touchPage.locator('[data-card-blur=kanan]').tap();
   assert.match(await photo.evaluate(e=>getComputedStyle(e).filter),/blur/);
