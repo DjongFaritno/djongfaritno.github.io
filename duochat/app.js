@@ -54,3 +54,15 @@
   compact.addEventListener('click', () => setCompact(true));
   restore.addEventListener('click', () => setCompact(false));
 })();
+
+(() => {
+ document.querySelectorAll('[data-preview-blur]').forEach(button => {
+  const panel = button.closest('.chat');
+  panel.querySelectorAll('.bubble').forEach(bubble => bubble.tabIndex = 0);
+  button.addEventListener('click', () => {
+   const enabled = button.getAttribute('aria-pressed') !== 'true';
+   button.setAttribute('aria-pressed',String(enabled)); button.textContent = enabled ? 'Blur ON' : 'Blur OFF';
+   panel.classList.toggle('preview-blurred',enabled);
+  });
+ });
+})();

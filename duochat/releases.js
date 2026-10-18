@@ -16,9 +16,9 @@
     if (!Array.isArray(releases)) return null;
     const candidates = [];
     for (const release of releases) {
-      if (!release || release.draft || !release.published_at || !Array.isArray(release.assets)) continue;
+      if (!release || release.draft || release.prerelease || !release.published_at || !Array.isArray(release.assets)) continue;
       const match = /^v?(\d+)\.(\d+)\.(\d+)(?:-([\w.-]+))?$/.exec(release.tag_name);
-      if (!match || !safeURL(release.html_url, repository + '/releases/tag/')) continue;
+      if (!match || match[4] || !safeURL(release.html_url, repository + '/releases/tag/')) continue;
       const version = release.tag_name.replace(/^v/, '');
       const downloads = {};
       for (const [kind, pattern] of Object.entries(patterns)) {
