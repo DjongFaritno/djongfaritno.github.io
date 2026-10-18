@@ -21,6 +21,7 @@ const server=http.createServer(async(req,res)=>{
    page.on('pageerror',error=>errors.push(error.message));
    await page.route('https://api.github.com/repos/DjongFaritno/SocialMedia/releases?*',route=>route.fulfill({json:[release]}));
    await page.goto(base);await page.locator('#release-status').filter({hasText:'0.4.0'}).waitFor();
+   await page.screenshot({path:'artifacts/duochat-'+width+'.png',fullPage:true});
    assert.equal(await page.locator('.service-chips span').count(),13);
    assert.equal(await page.locator('[data-release-download=windows]').getAttribute('href'),release.assets[0].browser_download_url);
    assert.ok(!/big update|big release|coba beta|0\.2\.0|artifact/i.test(await page.locator('body').innerText()));
@@ -29,7 +30,8 @@ const server=http.createServer(async(req,res)=>{
    await first.click();assert.equal(await first.getAttribute('aria-pressed'),'true');assert.equal(await second.getAttribute('aria-pressed'),'false');
    await page.mouse.move(0,0);
    assert.match(await page.locator('.chat').first().locator('.bubble').first().evaluate(e=>getComputedStyle(e).filter),/blur/);
-   const bubble=page.locator('.chat').first().locator('.bubble').first();await bubble.focus();
+   const bubble=page.locator('.chat').first().locator('.bubble').first();await first.focus();await page.keyboard.press('Tab');
+   assert.equal(await bubble.evaluate(e=>document.activeElement===e),true,'Tab reaches the first message');
    assert.equal(await bubble.evaluate(e=>getComputedStyle(e).filter),'none','keyboard reveal');
    await second.focus();await page.mouse.move(0,0);await page.waitForTimeout(30);
    assert.match(await bubble.evaluate(e=>getComputedStyle(e).filter),/blur/);
