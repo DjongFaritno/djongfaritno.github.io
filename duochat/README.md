@@ -2,7 +2,7 @@
 
 Website produk di https://djongfaritno.github.io/duochat/ disimpan terpisah dari repository aplikasi SocialMedia.
 
-Halaman menampilkan fitur yang tersedia pada DuoChat 0.4.0: 13 layanan, multiakun, dua panel, blur per panel dengan pilihan elemen bersama, password/Windows Hello/Touch ID, mode ringkas/sidebar hover, tema dan Bahasa Indonesia/English. Demo memakai pesan contoh; tombol Blur terpisah untuk masing-masing panel.
+Halaman menampilkan fitur yang tersedia pada DuoChat 2.0.0: 13 layanan, multiakun, dua panel, blur per panel dengan pilihan elemen bersama, password/Windows Hello/Touch ID, mode ringkas/sidebar hover, tema dan Bahasa Indonesia/English. Demo memakai pesan contoh; tombol Blur terpisah untuk masing-masing panel.
 
 Unduhan memakai releases.js dan API GitHub publik. Hanya rilis stabil dengan keempat aset unduhan yang sudah terunggah dipilih; draft/prerelease/nomor bersufiks tidak menggantikan rilis publik. Saat API gagal, semua tombol mengarah ke daftar rilis tanpa menawarkan installer lama sebagai fallback. Tidak ada token, analytics atau font eksternal.
 

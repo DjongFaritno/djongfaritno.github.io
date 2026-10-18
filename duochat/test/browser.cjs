@@ -12,7 +12,7 @@ const server=http.createServer(async(req,res)=>{
 (async()=>{
  await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
  const browser=await chromium.launch();const base='http://127.0.0.1:'+server.address().port+'/duochat/';
- const version='0.4.0',names=['DuoChat-'+version+'-Windows-x64-Setup.exe','DuoChat-'+version+'-macOS-universal.dmg','DuoChat-'+version+'.AppImage','install-fedora.sh'];
+ const version='2.0.0',names=['DuoChat-'+version+'-Windows-x64-Setup.exe','DuoChat-'+version+'-macOS-universal.dmg','DuoChat-'+version+'.AppImage','install-fedora.sh'];
  const release={tag_name:'v'+version,published_at:'2026-10-18T00:00:00Z',html_url:'https://github.com/DjongFaritno/SocialMedia/releases/tag/v'+version,assets:names.map(name=>({name,size:1,state:'uploaded',browser_download_url:'https://github.com/DjongFaritno/SocialMedia/releases/download/v'+version+'/'+name}))};
  await fs.mkdir('artifacts',{recursive:true});
  try{
@@ -20,12 +20,13 @@ const server=http.createServer(async(req,res)=>{
    const page=await browser.newPage({viewport:{width,height:1000},reducedMotion:'reduce'});const errors=[];
    page.on('pageerror',error=>errors.push(error.message));
    await page.route('https://api.github.com/repos/DjongFaritno/SocialMedia/releases?*',route=>route.fulfill({json:[release]}));
-   await page.goto(base);await page.locator('#release-status').filter({hasText:'0.4.0'}).waitFor();
+   await page.goto(base);await page.locator('#release-status').filter({hasText:'2.0.0'}).waitFor();
    await page.screenshot({path:'artifacts/duochat-'+width+'.png',fullPage:true});
    assert.equal(await page.locator('.service-chips span').count(),13);
    assert.equal(await page.locator('.free-note').count(),2);
    for(const note of await page.locator('.free-note').all())assert.match(await note.innerText(),/Gratis.*Tanpa iklan.*Tanpa langganan/);
-   assert.equal(await page.locator('[data-release-download=windows]').getAttribute('href'),release.assets[0].browser_download_url);
+   for(const [index,kind] of ['windows','mac','linux','fedora'].entries())assert.equal(await page.locator('[data-release-download='+kind+']').getAttribute('href'),release.assets[index].browser_download_url);
+   assert.ok((await page.locator('[data-release-command]').innerText()).includes('DuoChat-2.0.0.AppImage'));
    assert.ok(!/big update|big release|coba beta|0\.2\.0|artifact/i.test(await page.locator('body').innerText()));
    assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),true,'no horizontal overflow '+width);
    const first=page.locator('[data-preview-blur]').first(),second=page.locator('[data-preview-blur]').nth(1);
