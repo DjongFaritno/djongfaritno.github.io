@@ -26,7 +26,7 @@ const server=http.createServer(async(req,res)=>{
    assert.equal(await page.locator('.free-note').count(),2);
    for(const note of await page.locator('.free-note').all())assert.match(await note.innerText(),/Gratis.*Tanpa iklan.*Tanpa langganan/);
    for(const [index,kind] of ['windows','mac','linux','fedora'].entries())assert.equal(await page.locator('[data-release-download='+kind+']').getAttribute('href'),release.assets[index].browser_download_url);
-   assert.match(await page.locator('[data-release-command]').innerText(),/DuoChat-2\\.0\\.0\\.AppImage/);
+   assert.ok((await page.locator('[data-release-command]').innerText()).includes('DuoChat-2.0.0.AppImage'));
    assert.ok(!/big update|big release|coba beta|0\.2\.0|artifact/i.test(await page.locator('body').innerText()));
    assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),true,'no horizontal overflow '+width);
    const first=page.locator('[data-preview-blur]').first(),second=page.locator('[data-preview-blur]').nth(1);
