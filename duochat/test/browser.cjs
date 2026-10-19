@@ -22,7 +22,8 @@ const server=http.createServer(async(req,res)=>{
    await page.route('https://api.github.com/repos/DjongFaritno/SocialMedia/releases?*',route=>route.fulfill({json:[release]}));
    await page.goto(base);await page.locator('#release-status').filter({hasText:'2.0.0'}).waitFor();
    await page.screenshot({path:'artifacts/duochat-'+width+'.png',fullPage:true});
-   assert.equal(await page.locator('.service-chips span').count(),13);
+   assert.equal(await page.locator('.service-chips span').count(),11);
+   assert.equal(await page.locator('.service-chips').innerText().then(text=>/Google Chat|Microsoft Teams/.test(text)),false);
    assert.equal(await page.locator('.free-note').count(),2);
    for(const note of await page.locator('.free-note').all())assert.match(await note.innerText(),/Gratis.*Tanpa iklan.*Tanpa langganan/);
    for(const [index,kind] of ['windows','mac','linux','fedora'].entries())assert.equal(await page.locator('[data-release-download='+kind+']').getAttribute('href'),release.assets[index].browser_download_url);
@@ -121,6 +122,6 @@ const server=http.createServer(async(req,res)=>{
   const page=await browser.newPage();await page.route('https://api.github.com/repos/DjongFaritno/SocialMedia/releases?*',route=>route.fulfill({status:503,body:'Unavailable'}));await page.goto(base);
   await page.locator('#release-status').filter({hasText:'belum bisa'}).waitFor();
   for(const link of await page.locator('[data-release-download]').all())assert.equal(await link.getAttribute('href'),'https://github.com/DjongFaritno/SocialMedia/releases');
-  console.log('WEBSITE CHROMIUM PASS: six illustrated interactive demos, scoped accounts/blur, lock focus, compact edge click/hover, theme/language, pause, touch, reduced motion; desktop/mobile, 13 services, no launch promotion, per-panel blur, keyboard reveal, compact/sidebar, themes, anchors, versioned downloads and API fallback.');
+  console.log('WEBSITE CHROMIUM PASS: six illustrated interactive demos, scoped accounts/blur, lock focus, compact edge click/hover, theme/language, pause, touch, reduced motion; desktop/mobile, 11 services, no launch promotion, per-panel blur, keyboard reveal, compact/sidebar, themes, anchors, versioned downloads and API fallback.');
  }finally{await browser.close();server.close();}
 })().catch(error=>{console.error(error);server.close();process.exitCode=1;});
