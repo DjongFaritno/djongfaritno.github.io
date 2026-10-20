@@ -13,7 +13,7 @@ const server=http.createServer(async(req,res)=>{
  await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
  const browser=await chromium.launch();const base='http://127.0.0.1:'+server.address().port+'/duochat/';
  const version='2.0.0',names=['DuoChat-'+version+'-Windows-x64-Setup.exe','DuoChat-'+version+'-macOS-universal.dmg','DuoChat-'+version+'.AppImage','install-fedora.sh'];
- const release={tag_name:'v'+version,published_at:'2026-10-18T00:00:00Z',html_url:'https://github.com/DjongFaritno/SocialMedia/releases/tag/v'+version,assets:names.map(name=>({name,size:1,state:'uploaded',browser_download_url:'https://github.com/DjongFaritno/SocialMedia/releases/download/v'+version+'/'+name}))};
+ const release={tag_name:'v'+version,published_at:'2026-10-18T00:00:00Z',html_url:'https://github.com/DjongFaritno/SocialMedia/releases/tag/v'+version,assets:names.map(name=>({name,size:1,state:'uploaded',download_count:17,browser_download_url:'https://github.com/DjongFaritno/SocialMedia/releases/download/v'+version+'/'+name}))};
  await fs.mkdir('artifacts',{recursive:true});
  try{
   for(const width of [1440,390]){
@@ -21,6 +21,7 @@ const server=http.createServer(async(req,res)=>{
    page.on('pageerror',error=>errors.push(error.message));
    await page.route('https://api.github.com/repos/DjongFaritno/SocialMedia/releases?*',route=>route.fulfill({json:[release]}));
    await page.goto(base);await page.locator('#release-status').filter({hasText:'2.0.0'}).waitFor();
+   await page.locator('#download-count').filter({hasText:'51'}).waitFor();
    await page.screenshot({path:'artifacts/duochat-'+width+'.png',fullPage:true});
    assert.equal(await page.locator('.service-chips span').count(),11);
    assert.equal(await page.locator('.service-chips').innerText().then(text=>/Google Chat|Microsoft Teams/.test(text)),false);
@@ -121,6 +122,7 @@ const server=http.createServer(async(req,res)=>{
 
   const page=await browser.newPage();await page.route('https://api.github.com/repos/DjongFaritno/SocialMedia/releases?*',route=>route.fulfill({status:503,body:'Unavailable'}));await page.goto(base);
   await page.locator('#release-status').filter({hasText:'belum bisa'}).waitFor();
+  assert.equal(await page.locator('#download-count').innerText(),'Belum tersedia');
   for(const link of await page.locator('[data-release-download]').all())assert.equal(await link.getAttribute('href'),'https://github.com/DjongFaritno/SocialMedia/releases');
   console.log('WEBSITE CHROMIUM PASS: six illustrated interactive demos, scoped accounts/blur, lock focus, compact edge click/hover, theme/language, pause, touch, reduced motion; desktop/mobile, 11 services, no launch promotion, per-panel blur, keyboard reveal, compact/sidebar, themes, anchors, versioned downloads and API fallback.');
  }finally{await browser.close();server.close();}

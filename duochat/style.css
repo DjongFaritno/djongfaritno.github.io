@@ -35,3 +35,5 @@ body{background:radial-gradient(ellipse at 6% 12%,#e3f7e9 0,transparent 34%),rad
 @media(max-width:400px){.feature-playground .feature-card{padding:20px}.fd-panel{padding:10px}.fd-contact{font-size:9px}.fd-msg{font-size:10px}}
 
 .free-note{font-size:14px;font-weight:600;color:#28634f;margin:20px 0 8px}.free-note>span{margin-right:5px;color:#298ab0}.download-free{text-align:center;margin:0 0 14px}@media(max-width:400px){.free-note{font-size:12px}}
+
+.download-stats{text-align:center;margin:24px auto 32px;max-width:560px;padding:22px;border:1px solid #21796326;border-radius:24px;background:#e0f2e9}.download-stats p{margin:0 0 8px;color:#254b40;font-size:17px}.download-stats strong{display:inline-block;font-size:32px;font-variant-numeric:tabular-nums;letter-spacing:-1px;margin-right:5px}.download-stats small{display:block;color:#46665c;font-size:12px;line-height:1.7}
