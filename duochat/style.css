@@ -36,4 +36,11 @@ body{background:radial-gradient(ellipse at 6% 12%,#e3f7e9 0,transparent 34%),rad
 
 .free-note{font-size:14px;font-weight:600;color:#28634f;margin:20px 0 8px}.free-note>span{margin-right:5px;color:#298ab0}.download-free{text-align:center;margin:0 0 14px}@media(max-width:400px){.free-note{font-size:12px}}
 
-.download-stats{text-align:center;margin:24px auto 32px;max-width:560px;padding:22px;border:1px solid #21796326;border-radius:24px;background:#e0f2e9}.download-stats p{margin:0 0 8px;color:#254b40;font-size:17px}.download-stats strong{display:inline-block;font-size:32px;font-variant-numeric:tabular-nums;letter-spacing:-1px;margin-right:5px}.download-stats small{display:block;color:#46665c;font-size:12px;line-height:1.7}
+.download-stats{text-align:center;margin:32px auto;max-width:720px;padding:36px 28px;border:1px solid #21796326;border-radius:28px;background:linear-gradient(125deg,#d9f2e4,#e0eff9);color:#254b40}
+.download-proof{display:inline-flex;flex-wrap:wrap;align-items:baseline;justify-content:center;gap:6px;margin:0 0 18px;padding:7px 14px;border-radius:100px;background:#ffffffa6;font-size:13px}
+.download-proof strong{font-size:17px;font-variant-numeric:tabular-nums}.download-proof>span{color:#217963}
+.download-stats h3{margin:0 0 16px;font-size:clamp(28px,4vw,42px);line-height:1.15;letter-spacing:-1.2px}
+.download-stats .download-pitch{max-width:440px;margin:0 auto 24px;font-size:16px;line-height:1.75;color:#46665c}
+.download-stats small{display:block;margin-top:14px;color:#46665c;font-size:12px;line-height:1.7}
+#pilih-perangkat{scroll-margin-top:24px}
+@media(max-width:400px){.download-stats{padding:28px 18px}.download-stats .download-pitch{font-size:14px}}
