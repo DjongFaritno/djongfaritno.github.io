@@ -2,7 +2,7 @@
 
 Website produk di https://djongfaritno.github.io/duochat/ disimpan terpisah dari repository aplikasi SocialMedia.
 
-Halaman menampilkan fitur yang tersedia pada DuoChat 2.0.6: 11 layanan, multiakun, dua panel, blur per panel dengan pilihan elemen bersama, password/Windows Hello/Touch ID, mode ringkas/sidebar hover, tema dan Bahasa Indonesia/English. Demo memakai pesan contoh; tombol Blur terpisah untuk masing-masing panel.
+Halaman menampilkan fitur yang tersedia pada DuoChat 2.0.7: 11 layanan, multiakun, dua panel, blur per panel dengan pilihan elemen bersama, password/Windows Hello/Touch ID, mode ringkas/sidebar hover, tema dan Bahasa Indonesia/English. Demo memakai pesan contoh; tombol Blur terpisah untuk masing-masing panel.
 
 Unduhan memakai releases.js dan API GitHub publik. Hanya rilis stabil dengan keempat aset unduhan yang sudah terunggah dipilih; draft/prerelease/nomor bersufiks tidak menggantikan rilis publik. Saat API gagal, semua tombol mengarah ke daftar rilis tanpa menawarkan installer lama sebagai fallback. Tidak ada token, analytics atau font eksternal.
 
@@ -18,3 +18,5 @@ Enam kartu fitur memakai ilustrasi mini UI langsung di HTML/CSS: ganti layanan p
 Referensi pola interaksi: [Apple iPhone](https://www.apple.com/iphone-17/) (pilihan warna yang mengubah visual, highlights) dan [MacBook Air](https://www.apple.com/macbook-air/). Aset dan identitas Apple tidak digunakan.
 
 QC Chromium mencakup enam demo, pemisahan state antar panel, hover/fokus dan ketuk untuk reveal, fokus saat kunci/buka, sidebar hover/ketuk/Escape, Auto mengikuti skema OS, bahasa, jeda akun, reduced motion, serta lebar desktop/mobile. Screenshot kartu tersimpan sebagai artifact workflow.
+
+Pada v2.0.7, pergantian panel langsung mengikuti pengaturan Tetap aktif yang tersimpan tanpa dialog konfirmasi tambahan. Pengaturan aktif mempertahankan koneksi latar belakang; pengaturan nonaktif menjeda akun saat keluar dari panel.
